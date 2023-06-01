@@ -1,0 +1,68 @@
+.tracker-container {
+  display: grid;
+  grid-template-columns: auto 1fr; // Extra column for 'Energy' label
+  grid-template-rows: 1fr auto; // Extra row for 'Mood' label
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tracker-field {
+  background: linear-gradient(90deg, rgb(249, 11, 118), rgb(255, 255, 106));
+  grid-column: 2;
+  grid-row: 1;
+  position: relative; // add relative position to the parent element
+  overflow: hidden;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    mask-image: linear-gradient(to bottom, transparent, black);
+    background: linear-gradient(90deg, rgb(0, 0, 85), rgb(73, 255, 237));
+  }
+}
+
+.field-label {
+  position: absolute;
+  background: rgba(white, 0.5);
+  padding: 0.3rem;
+  font-size: 0.8rem;
+}
+
+.low-unhappy {
+  bottom: 0;
+  left: 0;
+}
+
+.low-happy {
+  bottom: 0;
+  right: 0;
+}
+
+.high-unhappy {
+  top: 0;
+  left: 0;
+}
+
+.high-happy {
+  top: 0;
+  right: 0;
+}
+
+.energy {
+  writing-mode: vertical-rl; // Rotates the text vertically
+  transform: rotate(180deg); // Flips the text so it's readable top to bottom
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center; // Centres the text vertically
+}
+
+.mood {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: center; // Centres the text horizontally
+  text-align: center;
+}
