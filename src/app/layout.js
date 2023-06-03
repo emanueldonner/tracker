@@ -1,8 +1,10 @@
 import Header from "./components/Header/Header"
 import "./globals.css"
 
+export const dynamic = "force-dynamic"
+
 export const metadata = {
-  title: "Create Next Tracker",
+  title: "Mental Health Tracker",
   description: "This is a tracker app to help you keep track.",
 }
 

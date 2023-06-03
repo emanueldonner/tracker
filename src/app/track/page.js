@@ -32,7 +32,7 @@ const Tracker = () => {
   const colorAgitated = [249, 11, 118] // Yellow in RGB
   const colorExcited = [255, 255, 106] // Red in RGB
 
-  const canvas = document.createElement("canvas")
+  const canvas = document?.createElement("canvas")
   canvas.width = 32
   canvas.height = 32
   const ctx = canvas.getContext("2d")
