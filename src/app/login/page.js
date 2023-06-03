@@ -1,9 +1,10 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
-import LoginForm from "./LoginForm"
+import LoginForm from "../components/LoginForm"
 
 import styles from "./LoginPage.module.scss"
-export async function LoginPage() {
+
+async function LoginPage() {
   const supabase = createServerComponentClient({ cookies })
 
   const {
