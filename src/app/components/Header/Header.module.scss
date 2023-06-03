@@ -1,0 +1,21 @@
+.header {
+  // height: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #dadada;
+  padding: 0.6rem;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  z-index: 10;
+  top: 0;
+  h2 {
+    margin: 0;
+  }
+}
+
+.user-container {
+  display: flex;
+  align-items: center;
+}
