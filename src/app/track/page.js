@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 
 import cx from "classnames"
@@ -31,6 +31,20 @@ const Tracker = () => {
   const colorRelaxed = [73, 255, 237]
   const colorAgitated = [249, 11, 118] // Yellow in RGB
   const colorExcited = [255, 255, 106] // Red in RGB
+
+  useEffect(() => {
+    const getSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession()
+
+      if (!session) {
+        // this is a protected route - only users who are signed in can view this route
+        redirect("/login")
+      }
+    }
+    getSession()
+  }, [])
 
   const canvas = document?.createElement("canvas")
   canvas.width = 32
