@@ -1,6 +1,7 @@
 "use client"
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
+import { redirect } from "next/navigation"
 import { useEffect, useState } from "react"
 
 import Avatar from "../components/Avatar/Avatar"
@@ -15,6 +16,12 @@ export default function Home() {
   )
 
   useEffect(() => {
+    const { session } = supabase.auth.getSession()
+
+    if (!session) {
+      // this is a protected route - only users who are signed in can view this route
+      redirect("/login")
+    }
     const getData = async () => {
       const { data } = await supabase.from("profile").select()
 

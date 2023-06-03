@@ -1,0 +1,22 @@
+.desktop-nav {
+  display: block;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .desktop-nav {
+    display: none;
+  }
+  .mobile-nav {
+    display: block;
+  }
+  .content {
+    height: 100dvh;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+  }
+}

@@ -1,0 +1,39 @@
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 1.4rem 2.8rem;
+}
+
+.login-form {
+  input {
+    width: 100%;
+    height: 30px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0.4rem;
+    margin-bottom: 1.4rem;
+  }
+  button {
+    width: 100%;
+    height: 30px;
+    // box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0.4rem;
+    margin: 0;
+    &.sign-up {
+      background: #fafafa;
+      // border: none;
+      // text-decoration: underline;
+    }
+  }
+  hr {
+    margin: 2rem;
+    border: none;
+    border-bottom: 1px solid #ccc;
+  }
+}

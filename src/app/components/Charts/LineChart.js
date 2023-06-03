@@ -141,7 +141,7 @@ const MoodEnergyChart = ({ entries }) => {
   }
 
   return (
-    <div className={styles["line-chart"]}>
+    <div className={styles["line-chart-wrapper"]}>
       {/* toggle for energy and mood view */}
       <div className={styles["line-chart__toggle"]}>
         <button
@@ -161,70 +161,74 @@ const MoodEnergyChart = ({ entries }) => {
           Energy
         </button>
       </div>
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart
-          width={500}
-          height={300}
-          data={data}
-          onClick={handleChartClick}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 10,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="formattedDate" />
-          <YAxis domain={[1, 10]} tickCount={10} />
-          <Tooltip content={<DataTooltip />} />
-          <Legend />
+      <div className={styles["line-chart-container"]}>
+        <div className={styles["line-chart"]}>
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart
+              width={500}
+              height={300}
+              data={data}
+              onClick={handleChartClick}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 10,
+                bottom: 5,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="formattedDate" />
+              <YAxis domain={[1, 10]} tickCount={10} />
+              <Tooltip content={<DataTooltip />} />
+              <Legend />
 
-          <Line
-            type="monotone"
-            dataKey="mood"
-            stroke="#8884d8"
-            strokeWidth={showMood ? 2 : 0}
-            dot={
-              showMood
-                ? {
-                    stroke: "#8884d8",
-                    strokeWidth: 2,
-                    fill: "#fff",
-                    r: 3,
-                  }
-                : {
-                    fill: "rgba(0,0,0,0.1)",
-                    r: 2,
-                  }
-            }
-            activeDot={{ r: 5 }}
-            name="Mood"
-          />
+              <Line
+                type="monotone"
+                dataKey="mood"
+                stroke="#8884d8"
+                strokeWidth={showMood ? 2 : 0}
+                dot={
+                  showMood
+                    ? {
+                        stroke: "#8884d8",
+                        strokeWidth: 2,
+                        fill: "#fff",
+                        r: 3,
+                      }
+                    : {
+                        fill: "rgba(0,0,0,0.1)",
+                        r: 2,
+                      }
+                }
+                activeDot={{ r: 5 }}
+                name="Mood"
+              />
 
-          <Line
-            type="monotone"
-            dataKey="energy"
-            stroke="#82ca9d"
-            strokeWidth={showEnergy ? 2 : 0}
-            dot={
-              showEnergy
-                ? {
-                    stroke: "#82ca9d",
-                    strokeWidth: 2,
-                    fill: "#fff",
-                    r: 3,
-                  }
-                : {
-                    fill: "rgba(0,0,0,0.1)",
-                    r: 2,
-                  }
-            }
-            activeDot={{ r: 5 }}
-            name="Energy"
-          />
-        </LineChart>
-      </ResponsiveContainer>
+              <Line
+                type="monotone"
+                dataKey="energy"
+                stroke="#82ca9d"
+                strokeWidth={showEnergy ? 2 : 0}
+                dot={
+                  showEnergy
+                    ? {
+                        stroke: "#82ca9d",
+                        strokeWidth: 2,
+                        fill: "#fff",
+                        r: 3,
+                      }
+                    : {
+                        fill: "rgba(0,0,0,0.1)",
+                        r: 2,
+                      }
+                }
+                activeDot={{ r: 5 }}
+                name="Energy"
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
       <dialog ref={dialogRef}>
         {showEditForm && <EditForm data={editData} dialogRef={dialogRef} />}
       </dialog>

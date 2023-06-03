@@ -4,7 +4,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 
-import styles from "./Header.module.scss"
+import styles from "./LoginPage.module.scss"
 
 export default function LoginForm({ session }) {
   const [email, setEmail] = useState("")
@@ -46,7 +46,7 @@ export default function LoginForm({ session }) {
       <button onClick={handleSignOut}>Sign out</button>
     </div>
   ) : (
-    <>
+    <div className={styles["login-form"]}>
       <input
         name="email"
         onChange={(e) => setEmail(e.target.value)}
@@ -58,8 +58,11 @@ export default function LoginForm({ session }) {
         onChange={(e) => setPassword(e.target.value)}
         value={password}
       />
-      <button onClick={handleSignUp}>Sign up</button>
       <button onClick={handleSignIn}>Sign in</button>
-    </>
+      <hr />
+      <button className={styles["sign-up"]} onClick={handleSignUp}>
+        Sign up
+      </button>
+    </div>
   )
 }
